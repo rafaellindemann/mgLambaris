@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faixa Vertical – LAMBARIS</title>
+<style>
+  /* =========================
+     CONFIGURAÇÕES RÁPIDAS
+     Ajuste as variáveis abaixo para replicar a faixa/bandeira.
+     ========================= */
+  :root{
+    /* ---- Visual na tela (preview) ---- */
+    --banner-width: 160px;        /* largura da faixa na tela */
+    --banner-padding: 18px;       /* “margem interna” à esquerda/direita */
+    --letter-size: 48px;          /* tamanho da letra na tela */
+    --letter-gap: 22px;           /* espaçamento entre letras (na vertical) */
+
+    /* ---- Modo impressão (tamanho real) ----
+       Use isto para protótipos em tamanho físico. */
+    --letter-height-cm: 5cm;      /* altura de CADA letra no papel */
+    --banner-width-cm: 8cm;       /* largura física da faixa no papel */
+    --banner-padding-cm: 1.5cm;   /* margem interna física */
+    --letter-gap-cm: 2.2cm;       /* espaçamento vertical entre letras */
+  }
+
+  /* Leicester local (coloque o arquivo em ./fonts/Leicester.ttf).
+     Remova/ajuste se for usar outra fonte. */
+  @font-face{
+    font-family: "Leicester";
+    src: url("./fonts/Leicester.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  /* Fallbacks razoáveis caso a Leicester não esteja disponível */
+  .uses-leicester{
+    font-family: "Leicester", "IM Fell English SC", "Cinzel Decorative", "Times New Roman", serif;
+  }
+
+  /* Página branca e centragem da faixa */
+  html, body{
+    height: 100%;
+    margin: 0;
+    background: #fff;
+  }
+  body{
+    display: grid;
+    place-items: center;
+  }
+
+  /* FAIXA */
+  .banner{
+    background: #000;
+    width: var(--banner-width);
+    padding-left: var(--banner-padding);
+    padding-right: var(--banner-padding);
+    /* Altura livre; usa o conteúdo. Para simular uma bandeira alta,
+       defina uma height específica (ex.: 90vh, 1200px, etc.) */
+    /* height: 90vh; */
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 1px #111 inset;
+  }
+
+  /* TEXTO VERTICAL */
+  .vertical-text{
+    writing-mode: vertical-rl;       /* escreve de cima para baixo */
+    text-orientation: upright;       /* mantém as letras “em pé” */
+    color: #e40000;
+    letter-spacing: var(--letter-gap);
+    font-size: var(--letter-size);
+    line-height: 1;                  /* letras justas */
+    font-weight: 400;
+    /* contorno leve para destacar no preto; opcional */
+    -webkit-text-stroke: 0.6px rgba(0,0,0,0.6);
+    text-shadow: 0 0 0.8px rgba(255,0,0,0.2);
+  }
+
+  /* ---- MODO IMPRESSÃO (tamanho físico em cm) ---- */
+  @media print{
+    /* página branca já é o padrão */
+    .banner{
+      width: var(--banner-width-cm);
+      padding-left: var(--banner-padding-cm);
+      padding-right: var(--banner-padding-cm);
+      /* se quiser altura física fixa da faixa na impressão, defina aqui:
+         height: 60cm; */
+      box-shadow: none; /* evita borda interna na impressão */
+    }
+    .vertical-text{
+      font-size: var(--letter-height-cm); /* altura da letra em cm */
+      letter-spacing: var(--letter-gap-cm);
+      -webkit-text-stroke: 0.2mm rgba(0,0,0,0.5);
+      text-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!--
+    Como usar / replicar:
+    - Para trocar o texto, mude o conteúdo do span abaixo.
+    - Para criar várias faixas, duplique o bloco .banner.
+    - Ajuste as variáveis no :root (tela) e @media print (papel).
+  -->
+  <div class="banner">
+    <span class="vertical-text uses-leicester">LAMBARIS</span>
+  </div>
+
+</body>
+</html>
