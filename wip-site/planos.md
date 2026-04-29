@@ -7,7 +7,8 @@
 - fórum de motos, pra discutir motos kkkkk
 - calendário de eventos;
 - diário da viagem da vez, tipo blog;
-- blog de textos livres (tem escritoras e escritores no grupo)
+- blog de textos livres (tem escritoras e escritores no grupo);
+- kit de mídias
 
 ## Balaio
 - Autenticação dos usuários;
